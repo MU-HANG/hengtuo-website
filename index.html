@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090e17">
+  <meta name="description" content="恒拓重工集团虚拟企业官网。探索重型工程装备、特种新材料、核心零部件与新能源业务，在 3D 展厅查看概念装备。">
+  <title>恒拓重工集团｜全产业链重型制造</title>
+  <link rel="icon" href="./assets/mark.png">
+  <link rel="preload" as="image" href="./assets/hero.webp">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳至正文</a>
+  <header class="site-header" id="top">
+    <div class="shell header-inner">
+      <a class="brand" href="#top" aria-label="恒拓重工集团首页">
+        <img src="./assets/mark.png" width="48" height="23" alt="">
+        <span><strong>恒拓重工</strong><small>HENGTUO HEAVY INDUSTRY</small></span>
+      </a>
+      <nav id="site-nav" class="site-nav" aria-label="主要导航">
+        <a class="nav-link is-current" href="#top">首页</a>
+        <a class="nav-link" href="#products">产品展厅</a>
+        <a class="nav-link" href="#industries">产业布局</a>
+        <a class="nav-link" href="#technology">研发与智造</a>
+        <a class="nav-link" href="#about">关于恒拓</a>
+      </nav>
+      <a class="glass header-cta" href="#products">进入 3D 展厅 <span class="arrow" aria-hidden="true">↗</span></a>
+      <button class="glass menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">菜单</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-media" aria-hidden="true"></div>
+      <div class="hero-wash" aria-hidden="true"></div>
+      <div class="shell hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> 恒拓重工集团</p>
+          <h1 id="hero-title">重器铸基<br><em>智造拓界</em></h1>
+          <p class="hero-description">从一块高性能材料，到一台面向复杂工况的重型装备。<br class="wide-break">以全产业链制造，承载每一份工程托付。</p>
+          <div class="hero-actions">
+            <a class="glass glass-amber" href="#products">探索 3D 装备 <span class="arrow" aria-hidden="true">↗</span></a>
+            <a class="glass glass-neutral" href="#about">了解恒拓 <span class="arrow" aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <span class="hero-caption">重型制造基地 · 概念影像</span>
+      </div>
+      <div class="hero-index">
+        <div class="shell hero-index-inner">
+          <a href="#heavy"><i></i>重型整机装备<span aria-hidden="true">↗</span></a>
+          <a href="#materials"><i></i>特种新材料<span aria-hidden="true">↗</span></a>
+          <a href="#components"><i></i>核心零部件<span aria-hidden="true">↗</span></a>
+          <a href="#energy"><i></i>新能源与新兴业务<span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell products section-space" id="products" aria-labelledby="products-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow"><span></span> PRODUCT SHOWROOM</p>
+          <h2 id="products-title">数字装备展厅</h2>
+        </div>
+        <p>切换装备，拖动查看结构与细节。<br>所有型号与参数均为概念设定。</p>
+      </div>
+
+      <div class="product-tabs" role="tablist" aria-label="切换装备">
+        <button type="button" id="tab-excavator" class="glass product-tab" role="tab" aria-controls="product-panel" aria-selected="true" data-kit="excavator"><span>HTE</span> 履带挖掘机</button>
+        <button type="button" id="tab-loader" class="glass product-tab" role="tab" aria-controls="product-panel" aria-selected="false" tabindex="-1" data-kit="loader"><span>HTL</span> 轮式装载机</button>
+        <button type="button" id="tab-truck" class="glass product-tab" role="tab" aria-controls="product-panel" aria-selected="false" tabindex="-1" data-kit="truck"><span>HTM</span> 刚性矿卡</button>
+      </div>
+      <div class="product-panel" id="product-panel" role="tabpanel" tabindex="0" aria-labelledby="tab-excavator">
+        <div class="product-info">
+          <span class="product-category" id="product-category">土方工程 · 履带式</span>
+          <h3 class="product-code" id="product-code">HTE<span>420</span></h3>
+          <p class="product-name" id="product-name">履带式液压挖掘机</p>
+          <p class="product-description" id="product-description">面向采石场、基础设施与大型土方工程。强化型工作装置配合宽履带底盘，兼顾挖掘力与复杂地面的通过性。</p>
+          <dl class="specs" id="specs">
+            <div><dt>工作质量</dt><dd>42 <small>t</small></dd></div>
+            <div><dt>标准斗容</dt><dd>2.4 <small>m³</small></dd></div>
+          </dl>
+        </div>
+        <div class="viewer" id="viewer" aria-label="互动装备模型">
+          <div class="viewer-tag"><i></i><span id="viewer-status" role="status">加载 3D 模型</span></div>
+          <img class="model-poster" id="model-poster" src="./assets/excavator.webp" alt="HTE 420 履带挖掘机概念模型">
+          <div id="model-surface" class="model-surface" tabindex="0" role="group" aria-label="3D 模型，方向键旋转，加号和减号缩放"></div>
+          <div class="viewer-toolbar" hidden>
+            <span class="interaction-hint">拖动旋转 · 点击模型后滚轮缩放</span>
+            <div class="viewer-actions">
+              <button class="glass viewer-button" id="rotate-model" type="button" aria-pressed="false">自动旋转</button>
+              <button class="glass viewer-button" id="reset-model" type="button">重置视角</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="industries" id="industries" aria-labelledby="industries-title">
+      <div class="shell section-space">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span></span> INDUSTRIAL PORTFOLIO</p>
+            <h2 id="industries-title">从材料到整机</h2>
+          </div>
+          <p>连接材料研发、核心部件、装备制造与能源应用，<br class="wide-break">为矿山、基建、海工与高端制造提供成套方案。</p>
+        </div>
+        <div class="industry-grid">
+          <article class="industry-card" id="heavy">
+            <h3>重型整机装备</h3>
+            <p>挖掘机、装载机、大型起重设备与矿山成套装备，配套运维与数字化调度。</p>
+            <a href="#products">查看装备展厅 <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="industry-card" id="materials">
+            <h3>特种新材料</h3>
+            <p>高强特种合金、钒钛改性材料与高性能复合材料，服务耐磨、轻量化及高强度需求。</p>
+          </article>
+          <article class="industry-card" id="components">
+            <h3>核心零部件</h3>
+            <p>工程机械液压传动件、精密铸件与新能源三电结构件，覆盖整机内部配套与对外供货。</p>
+          </article>
+          <article class="industry-card" id="energy">
+            <h3>新能源与新兴业务</h3>
+            <p>布局光伏智能玻璃、储能结构件与低碳海工装备，拓展绿色制造的应用场景。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell technology section-space" id="technology" aria-labelledby="technology-title">
+      <div class="tech-picture">
+        <img src="./assets/weld.webp" width="1280" height="720" alt="工业机器人在智能产线上焊接钢结构的概念场景" loading="lazy">
+        <span>智能焊接产线 · 概念影像</span>
+      </div>
+      <div class="tech-copy">
+        <p class="eyebrow"><span></span> ENGINEERING &amp; DIGITALIZATION</p>
+        <h2 id="technology-title">研发与智造</h2>
+        <p>让材料性能、产品设计、试验验证和制造反馈在同一条链上流转。H‑Manufact 工业互联网平台连接设备运行、生产工序和远程运维。</p>
+        <ul class="technology-list">
+          <li><strong>协同研发</strong><span>材料验证与结构设计同步推进</span></li>
+          <li><strong>质量追溯</strong><span>联结关键工序与试验数据</span></li>
+          <li><strong>设备运维</strong><span>支持状态监测与维保调度</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="shell about-inner section-space">
+        <div class="about-copy">
+          <p class="eyebrow"><span></span> ABOUT HENGTUO</p>
+          <h2 id="about-title">实业为本<br>科技登顶</h2>
+          <p>恒拓重工集团的企业设定始于 2001 年，总部位于江苏无锡。集团以材料、部件、装备与新能源四个业务板块协同发展，服务矿山、基础设施、海工和高端装备制造。</p>
+          <p class="about-values">实业为本 · 科技登顶 · 笃信守责</p>
+        </div>
+        <figure class="campus">
+          <img src="./assets/campus.webp" width="1600" height="900" alt="恒拓重工园区鸟瞰概念图，画面含生产厂房与品牌标识" loading="lazy">
+          <figcaption>恒拓重工工业园区 · 概念影像</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <a class="brand" href="#top" aria-label="返回恒拓重工首页">
+        <img src="./assets/mark.png" width="48" height="23" alt="">
+        <span><strong>恒拓重工</strong><small>HENGTUO HEAVY INDUSTRY</small></span>
+      </a>
+      <p>© 2026 恒拓重工集团 · 虚拟企业展示<br>网站所示园区、产品型号与技术参数用于概念展示。</p>
+      <a class="glass footer-top" href="#top">回到顶部 <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+</body>
+</html>
