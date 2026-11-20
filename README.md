@@ -15,3 +15,5 @@
 - GitHub Pages 使用 `main` 分支的根目录发布。图片和脚本使用相对地址。
 
 页面图片由用户提供或由 AI 生成。三款概念装备为本项目建模。Three.js 使用 MIT 许可，许可证位于 `assets/THREE-LICENSE.txt`。
+
+页面参考了 [NIO ET9 官网](https://www.nio.com/et9) 的长图叙事及 [DJI Mavic 4 Pro 官网](https://www.dji.com/cn/mavic-4-pro) 的居中首屏和产品入口布局。

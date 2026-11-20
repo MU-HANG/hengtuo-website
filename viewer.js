@@ -262,8 +262,8 @@ function stage(scene) {
   canvas.height = size;
   const ctx = canvas.getContext('2d');
   const gradient = ctx.createRadialGradient(size/2, size/2, size*.03, size/2, size/2, size*.49);
-  gradient.addColorStop(0, '#000d');
-  gradient.addColorStop(.62, '#0008');
+  gradient.addColorStop(0, '#20314970');
+  gradient.addColorStop(.62, '#2031492b');
   gradient.addColorStop(1, '#0000');
   ctx.fillStyle = gradient;
   ctx.fillRect(0,0,size,size);
