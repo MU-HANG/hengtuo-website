@@ -16,6 +16,57 @@ const products = {
   },
 };
 
+const film = document.querySelector('#brand-film');
+const filmToggle = document.querySelector('#film-toggle');
+const filmStage = film.closest('.hero-stage');
+const filmLabel = filmToggle.querySelector('span');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const compactFilm = window.matchMedia('(max-width: 680px)');
+let filmInView = false;
+let filmPreference;
+let filmUnavailable = false;
+
+function syncFilm() {
+  const allowAutoplay = !reducedMotion.matches && !navigator.connection?.saveData;
+  const shouldPlay = filmPreference ?? allowAutoplay;
+  if (!shouldPlay || !filmInView || document.hidden || filmUnavailable) {
+    film.pause();
+    return;
+  }
+  if (!film.getAttribute('src')) {
+    film.muted = true;
+    film.src = compactFilm.matches ? film.dataset.mobile : film.dataset.desktop;
+  }
+  if (film.paused) film.play().catch(updateFilmToggle);
+}
+
+function updateFilmToggle() {
+  filmToggle.classList.toggle('is-playing', !film.paused);
+  filmLabel.textContent = film.paused ? '播放影像' : '暂停影像';
+}
+
+filmToggle.addEventListener('click', () => {
+  filmPreference = film.paused;
+  syncFilm();
+});
+film.addEventListener('play', updateFilmToggle);
+film.addEventListener('pause', updateFilmToggle);
+film.addEventListener('playing', () => filmStage.classList.add('is-film-ready'));
+film.addEventListener('error', () => {
+  filmUnavailable = true;
+  filmStage.classList.remove('is-film-ready');
+  filmToggle.hidden = true;
+});
+reducedMotion.addEventListener('change', syncFilm);
+document.addEventListener('visibilitychange', syncFilm);
+
+const filmObserver = new IntersectionObserver(([entry]) => {
+  filmInView = entry.intersectionRatio >= .16;
+  syncFilm();
+}, { threshold: .16 });
+filmObserver.observe(filmStage);
+filmToggle.hidden = false;
+
 const nav = document.querySelector('.site-nav');
 const menu = document.querySelector('.menu-toggle');
 const navLinks = [...nav.querySelectorAll('a')];

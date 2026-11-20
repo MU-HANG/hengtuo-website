@@ -7,7 +7,6 @@
   <meta name="description" content="恒拓重工集团虚拟企业官网。探索重型工程装备、特种新材料、核心零部件与新能源业务，在 3D 展厅查看概念装备。">
   <title>恒拓重工集团｜全产业链重型制造</title>
   <link rel="icon" href="./assets/mark.png">
-  <link rel="preload" as="image" href="./assets/hero-launch.webp">
   <link rel="stylesheet" href="./styles.css">
   <script defer src="./app.js"></script>
 </head>
@@ -34,7 +33,12 @@
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-stage">
-        <div class="hero-media" aria-hidden="true"></div>
+        <picture class="hero-media" aria-hidden="true">
+          <source media="(max-width: 680px)" srcset="./assets/brand-film-mobile.webp">
+          <img src="./assets/brand-film-poster.webp" alt="" fetchpriority="high">
+        </picture>
+        <video class="hero-film" id="brand-film" muted playsinline loop preload="none" aria-hidden="true"
+          data-desktop="./assets/brand-film.mp4" data-mobile="./assets/brand-film-mobile.mp4"></video>
         <div class="hero-wash" aria-hidden="true"></div>
         <div class="shell hero-inner">
           <div class="hero-copy">
@@ -46,7 +50,13 @@
               <a class="glass glass-neutral" href="#about">了解恒拓 <span class="arrow" aria-hidden="true">↓</span></a>
             </div>
           </div>
-          <span class="hero-caption">HTE 系列重型挖掘机 · 概念影像</span>
+          <div class="hero-meta">
+            <span class="hero-caption">恒拓重工 · 品牌概念影像</span>
+            <button class="glass film-toggle" id="film-toggle" type="button" aria-controls="brand-film" hidden>
+              <i class="film-icon" aria-hidden="true"></i>
+              <span>播放影像</span>
+            </button>
+          </div>
         </div>
       </div>
       <div class="hero-index">

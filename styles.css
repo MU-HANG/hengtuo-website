@@ -57,22 +57,33 @@ section, article { scroll-margin-top: 24px; }
 .glass-amber:hover { border-color: #925026; box-shadow: inset 0 2px 4px #fff5dfba, 0 9px 25px #a45d3444; }
 .glass-neutral { --surface: #f7fbff83; }
 
-.hero { background: #dce5ed; color: #142336; }
-.hero-stage { position: relative; isolation: isolate; overflow: hidden; }
-.hero-media, .hero-wash { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
-.hero-media { background: #dce5ed url("./assets/hero-launch.webp") center 57% / cover no-repeat; animation: settle 1.45s cubic-bezier(.16, 1, .3, 1) both; }
-.hero-wash { background: linear-gradient(180deg, #e7eef4c9, #e2ebf278 21%, transparent 48%, transparent 85%, #26364536); }
+.hero { color: #f9fbff; }
+.hero-stage { position: relative; isolation: isolate; overflow: hidden; background: #142436; }
+.hero-media, .hero-film, .hero-wash { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.hero-media img, .hero-film { width: 100%; height: 100%; object-fit: cover; object-position: center 52%; }
+.hero-film { opacity: 0; transition: opacity .34s ease; }
+.is-film-ready .hero-film { opacity: 1; }
+.hero-wash { background: linear-gradient(180deg, #091420d6, #0a1727a9 29%, #0a172733 58%, transparent 74%, #0a1426a1 100%); }
 .hero-inner { min-height: clamp(555px, 49vw, 770px); display: grid; align-items: start; position: relative; padding-block: clamp(38px, 4.7vw, 74px) 40px; text-align: center; }
-.hero-copy { animation: arrive .7s .04s cubic-bezier(.16, 1, .3, 1) both; }
+.hero-copy { text-shadow: 0 2px 23px #08132196; animation: arrive .7s .04s cubic-bezier(.16, 1, .3, 1) both; }
 .hero-kicker { font-size: .88rem; letter-spacing: .22em; font-weight: 670; }
 .eyebrow { color: var(--amber); font-weight: 760; font-size: .78rem; letter-spacing: .16em; display: flex; align-items: center; gap: 10px; }
 .eyebrow > span { display: inline-block; width: 22px; height: 1px; background: currentColor; flex: none; }
 .hero h1 { font-size: clamp(2.55rem, 4.45vw, 5.25rem); font-weight: 710; line-height: 1.13; letter-spacing: -.033em; margin-block: 13px 12px; }
-.hero-description { color: #293d52; line-height: 1.7; font-size: clamp(.91rem, 1.23vw, 1.14rem); }
+.hero-description { color: #e4edf5; line-height: 1.7; font-size: clamp(.91rem, 1.23vw, 1.14rem); }
 .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 19px; }
-.hero-actions .glass { padding: 8px 21px; }
-.hero-caption { position: absolute; right: 0; bottom: 20px; color: #fff; background: #192d43b8; border-radius: 4px; padding: 3px 8px; font-size: .72rem; letter-spacing: .055em; }
-.hero-index { background: #f7f9fb; border-block: 1px solid #97adc342; }
+.hero-actions .glass { padding: 8px 21px; text-shadow: none; }
+.hero-actions .glass-neutral, .film-toggle {
+  --light: #dcebff43; --surface: #1626379c; color: #f9fbff; border-color: #d6e7f797;
+  box-shadow: inset 0 1px 2px #e7f2fb48, 0 5px 15px #06122332;
+}
+.hero-actions .glass-neutral:hover, .film-toggle:hover { border-color: #f7fbff; }
+.hero-meta { position: absolute; inset: auto 0 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; text-align: start; }
+.hero-caption { color: #f7faff; background: #101e2c99; border-radius: 5px; padding: 3px 8px; font-size: .75rem; letter-spacing: .055em; }
+.film-toggle { padding: 7px 13px; gap: 8px; font-size: .8rem; }
+.film-icon { display: inline-block; width: 10px; height: 10px; background: currentColor; clip-path: polygon(13% 0, 100% 50%, 13% 100%); }
+.film-toggle.is-playing .film-icon { background: linear-gradient(90deg, currentColor 0 36%, transparent 36% 64%, currentColor 64%); clip-path: none; }
+.hero-index { background: #f7f9fb; border-block: 1px solid #97adc342; color: var(--ink); }
 .hero-index-inner { display: grid; grid-template-columns: repeat(4, 1fr); }
 .hero-index a { display: flex; align-items: center; gap: 11px; color: #30445a; padding: 16px 23px; border-right: 1px solid #91aec444; font-size: .89rem; transition: color .2s, background .2s; }
 .hero-index a:first-child { border-left: 1px solid #91aec42a; }
@@ -150,10 +161,8 @@ h2 { font-size: clamp(2.25rem, 4vw, 4.2rem); letter-spacing: -.045em; line-heigh
 .footer-top { padding: 8px 15px; }
 
 @keyframes arrive { from { opacity: 0; transform: translateY(19px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes settle { from { transform: scale(1.035); } to { transform: scale(1); } }
 @media (max-width: 960px) {
   .header-cta { display: none; }
-  .hero-media { background-position: center 66%; }
   .hero-index a { padding-inline: 12px; gap: 7px; }
   .product-panel { grid-template-columns: minmax(253px, 35%) minmax(0, 1fr); }
   .viewer-toolbar { justify-content: flex-end; }
@@ -172,11 +181,12 @@ h2 { font-size: clamp(2.25rem, 4vw, 4.2rem); letter-spacing: -.045em; line-heigh
   .menu-toggle { display: inline-flex; padding: 6px 14px; }
   .hero-inner { min-height: 490px; padding-block: 47px 54px; }
   .hero h1 { font-size: clamp(2.05rem, 8.3vw, 3.37rem); margin-block: 11px 11px; }
-  .hero-media { background-position: center bottom; background-size: auto max(59%, 260px); }
-  .hero-wash { background: linear-gradient(180deg, #e4edf4 0%, #e5edf4 35%, #e4edf4c0 44%, transparent 60%); }
+  .hero-wash { background: linear-gradient(180deg, #091420de, #091420a1 39%, transparent 76%, #0a1426af 100%); }
   .hero-actions { margin-top: 15px; gap: 8px; }
   .hero-actions .glass { padding: 7px 14px; gap: 8px; }
-  .hero-caption { bottom: 13px; font-size: .67rem; }
+  .hero-meta { bottom: 15px; }
+  .hero-caption { font-size: .69rem; }
+  .film-toggle { padding-inline: 10px; }
   .wide-break { display: none; }
   .hero-index-inner { grid-template-columns: repeat(2, 1fr); }
   .hero-index a { font-size: .82rem; padding-block: 12px; }
@@ -201,5 +211,5 @@ h2 { font-size: clamp(2.25rem, 4vw, 4.2rem); letter-spacing: -.045em; line-heigh
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
-  .hero-copy, .hero-media { animation: none; }
+  .hero-copy { animation: none; }
 }
